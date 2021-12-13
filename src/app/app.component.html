@@ -1,0 +1,44 @@
+<div>
+  <h1>Angular DLS Samples</h1>
+</div>
+
+<div id="dds__full-screen-overlay" class="dds__overlay"></div><!-- .dds__overlay div is required once per application -->
+
+<div class="dds__container">
+  <div class="spacer"></div>
+
+  <app-table-component></app-table-component>
+
+  <div class="spacer"></div>
+
+  <div style="text-align: center">
+    <app-popover-component data-pPlacement="left" data-pTitle="Title From AppComponent">
+      Content for the <a id="changeMe" href="#">Popover</a> which is coming from AppComponent
+    </app-popover-component>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div style="text-align: center">
+    <app-modal-component modalId="fromageId" modalTitleId="fromageTitle">
+      <div modal-title>
+          Saveur de fromage
+      </div>
+      <div modal-body>
+        This uses the modal.component.ts - not the same as that which is being built
+        into the table component, above.
+      </div>
+      <div modal-footer>
+          <button class="dds__btn dds__btn-secondary" data-dismiss="dds__modal">Non</button>&nbsp;
+          <button class="dds__btn dds__btn-primary">Oui</button>
+      </div>
+      <span modal-trigger>
+          <button role="button" class="dds__btn dds__btn-primary">
+              ModalComponent example
+          </button>
+          &nbsp;
+      </span>
+    </app-modal-component>
+  </div>
+</div>
+

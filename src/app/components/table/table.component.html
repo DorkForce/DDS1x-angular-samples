@@ -1,0 +1,60 @@
+<h2>Sample homespun search</h2>
+<h5>(it doesn't matter what you search for; the data is hardcoded)</h5>
+			<!-- Form starts -->
+			<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" data-toggle="dds__form-validation">
+        <div class="mb-3" class="dds__form-group">
+          <!-- select column -->
+          <select class="dds__form-control" formControlName="columnName">
+            <option value="">Choose your field</option>
+            <option *ngFor="let column of columns" [ngValue]="column" (change)="changeColumn($event)">{{column}}</option>
+          </select>
+
+          <!-- search value input -->
+          <input formControlName="searchText" id="searchText" [(value)]="searchTerm" type="text" class="dds__form-control" placeholder="Search Here" maxlength="256">
+
+          <!-- error blocks -->
+          <div class="invalid-feedback" *ngIf="isSubmitted && columnName.errors?.required">
+            <sup>*</sup>Please choose a column to search by
+          </div>
+          <div class="invalid-feedback" *ngIf="isSubmitted && searchText.errors?.required">
+            <sup>*</sup>Please enter a search value
+          </div>
+        </div>            
+
+          <!-- Submit Button -->
+          <button type="submit" class="dds__btn dds__btn-primary dds__text-truncate">Submit</button>
+          <button type="reset" class="dds__btn dds__btn-secondary dds__text-truncate" (click)="reset()">Reset</button>
+      </form><!-- Form ends -->
+
+      <hr />
+
+      <!-- THE TABLE COMPONENT -->
+      <table data-table="dds__table" class="dds__table dds__table-hover dds__table-cmplx dds__table-striped">
+        <caption class="dds__sr-only">A Complex Tables
+            <span>Table used to display User information</span>
+        </caption>
+      </table>
+      <nav class="dds__pagination dds__pagination-justified-filter" data-toggle="dds__pagination" aria-label="pagination"></nav>
+
+      <hr />
+
+      <div id="modalPlaceholder"></div>
+      <div id="exampleModal" tabindex="-1" class="dds__modal dds__fade" role="dialog" aria-labelledby="dds__modal-title1" aria-hidden="true" style="">
+        <div class="dds__modal-dialog" role="document">
+          <div class="dds__modal-content">
+              <div class="dds__modal-header">
+                <h3 class="dds__modal-title" id="dds__modal-title1">
+                    {{ modalTitle }}
+                </h3>
+              </div>
+              <button class="dds__close" data-dismiss="dds__modal" aria-label="Close"><span class="dds__icons dds__close-x" aria-hidden="true"></span></button>
+              <div class="dds__modal-body">
+                {{ modalBody }}
+              </div>
+              <div class="dds__modal-footer">
+                <button class="dds__btn dds__btn-secondary" data-dismiss="dds__modal">{{ modalNo }}</button>
+                <button class="dds__btn dds__btn-primary">{{ modalYes }}</button>
+              </div>
+          </div>
+        </div>
+      </div>
